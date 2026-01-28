@@ -95,7 +95,20 @@ JavaScript has **three types of variables**:
 var a = 10;
 var a = 20; // allowed
 
-### ❌ Problems:
-- Scope issues
-- Bug-prone behavior
- 
+---
+
+---
+
+
+
+
+❌ Problems:
+
+- Scope issues  
+- Can cause bugs  
+
+---
+
+
+
+
