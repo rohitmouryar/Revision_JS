@@ -64,12 +64,11 @@ typeof null      // ❗ object (JS bug)
 
 // 7️⃣ Operators (With Logic)
 
-
 5 == "5"   // true
 5 === "5"  // false
+5 != "5"  ; // false
+5 !== "5";  // true
 // 📌 Always use ===
-5 != "5"   // false
-5 !== "5"  // true
 
 // Logical Operators
 true && false  // false
