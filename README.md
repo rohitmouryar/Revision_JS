@@ -48,3 +48,54 @@ JavaScript works in the following way:
 console.log("1");
 console.log("2");
 console.log("3");
+
+## 3️⃣ Ways to Write JavaScript Code
+
+---
+
+### 🔹 Inside the Browser
+
+You can write and test JavaScript directly in the browser using the **Console**.
+
+**Steps:**
+- Right click on the web page  
+- Select **Inspect**  
+- Open the **Console** tab  
+- Write JavaScript code and press Enter  
+
+---
+
+### 🔹 Inside an HTML File
+
+JavaScript can be written inside an HTML file using the `<script>` tag.
+
+```html
+<script>
+  alert("Hello JS");
+</script>
+ ---
+
+## 4️⃣ Variables (🔥 Very Important)
+
+A variable is a container used to store data.
+
+JavaScript has **three types of variables**:
+
+| Keyword | Scope    | Reassign | Redeclare |
+|--------|----------|----------|-----------|
+| var    | Function | ✅       | ✅        |
+| let    | Block    | ✅       | ❌        |
+| const  | Block    | ❌       | ❌        |
+
+---
+
+###🔹 var (Old – Avoid Using)
+
+```javascript
+var a = 10;
+var a = 20; // allowed
+
+### ❌ Problems:
+- Scope issues
+- Bug-prone behavior
+ 
