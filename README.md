@@ -254,6 +254,7 @@ console.log(obj1.name); // "Sharma" (obj1 भी बदल गया)
 ## 6️⃣ typeof Operator (Interview Favourite)
 
 ```javascript
+
 typeof 10        // number
 typeof "hello"   // string
 typeof true      // boolean
@@ -274,4 +275,51 @@ typeof null === "object" (historic bug)
 
 ## 7️⃣ Operators (With Logic)
 ### 🔹 Arithmetic
+```javascript
++  -  *  /  %
+```
+
+### 🔹 Comparison
+```Javascript
+==   // value check
+===  // value + type check (BEST)
+5 == "5"   // true
+5 === "5"  // false
+```
+
+### 📌 Always use ===
+
+---
+
+### 🔹 Logical
+```javascript
+&&  ||  !```
+
+## 8️⃣ Input & Output
+
+###🔹 Output
+```javascript
+console.log("Hello");
+alert("Hi");
+```
+
+### 🔹 Input
+```javascript
+let name = prompt("Enter your name");
+```
+
+---
+
+## 9️⃣ Mini Logic Examples
+
+```javascript
+Even / Odd
+let num = 10;
+if(num % 2 === 0){
+  console.log("Even");
+}else{
+  console.log("Odd");
+}```
+
+---
 
