@@ -943,11 +943,173 @@ console.log(true + true); // ?
 console.log(null + 1); // ?
 ```
 #### ✔ Answers:
+```js
 52
 3
 2
 1
-
+```
 ---
 
 # 🟡 DAY 2 – Conditionals, Loops & Functions (Deep Dive)
+
+## 1️⃣ Conditional Statements (Decision Making)
+### 🔹 if – else
+```js
+let age = 20;
+
+if (age >= 18) {
+  console.log("Eligible for vote");
+} else {
+  console.log("Not eligible");
+}
+```
+#### 📌 Flow:
+Condition true → if block
+false → else block
+---
+
+### 🔹 else if (Multiple conditions)
+```js
+let marks = 75;
+
+if (marks >= 90) {
+  console.log("Grade A");
+} else if (marks >= 70) {
+  console.log("Grade B");
+} else {
+  console.log("Grade C");
+}
+```
+
+#### 📌 Interview Tip:
+JS top-to-bottom check karta hai, pehla true mila to wahi stop.
+(JS checks top-to-bottom, stopping at the first true found.)
+---
+
+### 🔹 switch case
+```js
+let day = 2;
+
+switch(day){
+  case 1:
+    console.log("Monday");
+    break;
+  case 2:
+    console.log("Tuesday");
+    break;
+  default:
+    console.log("Invalid day");
+}
+```
+
+#### 📌 Interview:
+break nahi lagaya → fall-through hota hai **❌**
+
+---
+
+## 2️⃣ Loops (Repetition ka King 👑)
+🔹 for loop
+for(let i = 1; i <= 5; i++){
+  console.log(i);
+}
+
+
+#### 📌 Use when iterations fixed ho
+
+### 🔹 while loop
+```js
+let i = 1;
+while(i <= 5){
+  console.log(i);
+  i++;
+}
+```
+#### 📌 Condition pe depend karta hai
+---
+
+#### 🔹 do-while (At least once)
+```js
+let i = 1;
+do{
+  console.log(i);
+  i++;
+}while(i <= 5);
+
+
+📌 Interview Favourite:
+do-while ek baar zaroor chalega
+```
+---
+
+### 🔹 break & continue
+```js
+for(let i = 1; i <= 5; i++){
+  if(i === 3) continue;
+  if(i === 5) break;
+  console.log(i);
+}
+```
+
+## 3 Funnction
+
+#### Question. What is the Function?
+Answer. A reusable block of code that performs a task. (Function = reusable block of code)
+
+#### 🔹 Normal Function
+```js
+function add(a, b){
+  return a + b;
+}
+console.log(add(10, 20));
+```
+
+#### 🔹 Function without return
+```js
+function greet(){
+  console.log("Hello Rohit");
+}
+greet();
+``` 
+
+#### 🔹 Function with default parameter
+```js
+function greet(name = "User"){
+  console.log("Hello " + name);
+}
+greet();
+```
+
+#### 🔹 Function Expression
+```js
+const multiply = function(a, b){
+  return a * b;
+};
+```
+
+## 📌 Hoisting yahan kaam nahi karta
+
+#### 🔹 Arrow Function (Modern JS)
+```js
+const square = (n) => n * n;
+console.log(square(5));
+```
+
+#### 📌 Arrow function me:
+this apna nahi hota
+
+#### Short syntax
+
+## 4️⃣ Scope (Intro – Deep later)
+```js
+let x = 10;
+
+function test(){
+  let y = 20;
+  console.log(x); // accessible
+}
+```
+
+#### 📌 Block scope → let, const
+#### 📌 Function scope → var
+---
