@@ -85,14 +85,38 @@ if(num % 2 === 0){
   console.log("Odd");
 }
 
-// DAY 1 Mini Project
-// ✅ Simple Calculator (Console)
+// 🟢 DAY 1 (EXTRA but IMPORTANT CONTENT)
+// 1️⃣ JavaScript Keywords & Reserved Words
 
-let a = Number(prompt("Enter first number"));
-let b1 = Number(prompt("Enter second number"));
+// let, const, var        // Variable declaration
+// if, else, else if      // Conditional statements
+// for, while, do         // Loops
+// function, return       // Functions
+// break, continue        // Loop control
+// true, false, null      // Literals
+// undefined              // Undefined value
+// try, catch, finally    // Error handling
+// throw                  // Throw errors
+// class, extends         // OOP
+// this, new, delete      // Object operations
+// typeof, instanceof     // Type checking
+// switch, case           // Switch statements
+// default                // Default case
+// import, export         // Modules
+// async, await           // Async operations
+// yield                  // Generators
+// super, static          // Class features
 
-console.log("Sum:", a + b1);
-console.log("Sub:", a - b1);
-console.log("Mul:", a * b1);
-console.log("Div:", a / b1);
 
+// Tricky Output
+console.log("5" + 2); // ?
+console.log("5" - 2); // ?
+console.log(true + true); // ?
+console.log(null + 1); // ?
+
+// ✔ Answers:
+52
+3
+2
+1
+// 2️⃣ JavaScript Comments
