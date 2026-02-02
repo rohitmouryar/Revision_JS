@@ -301,6 +301,7 @@ typeof null === "object" (historic bug)
 ```javascript
 console.log("Hello");
 alert("Hi");
+
 ```
 
 ### 🔹 Input
@@ -323,3 +324,630 @@ if(num % 2 === 0){
 
 ---
 
+## 🎯 Interview Questions (DAY 1)
+
+### Q1: JS kya hai? (What is JavaScript?)
+
+JavaScript is a lightweight, interpreted programming language that runs in browsers and makes web pages interactive.
+
+```javascript
+// JavaScript allows dynamic interactions
+document.getElementById("btn").addEventListener("click", function() {
+  alert("Button Clicked!");
+});
+```
+
+---
+
+### Q2: var, let, const difference
+
+```javascript
+// VAR - Function scoped, can be redeclared and updated
+var a = 10;
+var a = 20; // ✅ Can redeclare
+a = 30; // ✅ Can update
+console.log(a); // 30
+
+// LET - Block scoped, cannot be redeclared but can be updated
+let b = 10;
+// let b = 20; // ❌ Cannot redeclare
+b = 30; // ✅ Can update
+console.log(b); // 30
+
+// CONST - Block scoped, cannot be redeclared or updated
+const c = 10;
+// const c = 20; // ❌ Cannot redeclare
+// c = 30; // ❌ Cannot update
+console.log(c); // 10
+
+// Block Scope Example
+if (true) {
+  var x = 1;
+  let y = 2;
+  const z = 3;
+}
+console.log(x); // 1 (accessible outside)
+// console.log(y); // ❌ ReferenceError
+// console.log(z); // ❌ ReferenceError
+```
+
+---
+
+### Q3: == vs ===
+
+```javascript
+// == (Loose Equality) - Type Coercion (converts types)
+console.log(5 == "5"); // ✅ true (converts string to number)
+console.log(0 == false); // ✅ true (converts boolean to number)
+console.log(null == undefined); // ✅ true
+
+// === (Strict Equality) - No Type Coercion (checks both value and type)
+console.log(5 === "5"); // ❌ false (different types)
+console.log(0 === false); // ❌ false (different types)
+console.log(null === undefined); // ❌ false (different types)
+
+// Best Practice: Always use ===
+if (age === 18) {
+  console.log("Adult");
+}
+```
+
+---
+
+### Q4: Primitive vs Non-Primitive
+
+```javascript
+// PRIMITIVE - Immutable, stored by value
+let num = 10; // Number
+let str = "Hello"; // String
+let bool = true; // Boolean
+let undef = undefined; // Undefined
+let empty = null; // Null
+let sym = Symbol("id"); // Symbol
+let big = 1000n; // BigInt
+
+// Stored by Value
+let a = 5;
+let b = a;
+b = 10;
+console.log(a); // 5 (not affected)
+
+// NON-PRIMITIVE - Mutable, stored by reference
+let arr = [1, 2, 3]; // Array
+let obj = { name: "John" }; // Object
+let func = function() {}; // Function
+
+// Stored by Reference
+let x = [1, 2, 3];
+let y = x;
+y.push(4);
+console.log(x); // [1, 2, 3, 4] (affected - same reference)
+console.log(x === y); // true (same reference)
+```
+
+---
+
+### Q5: typeof null kya hota hai? (What does typeof null return?)
+
+```javascript
+// typeof null returns "object" (This is a bug in JavaScript!)
+console.log(typeof null); // ❌ "object" (should be "null")
+console.log(typeof undefined); // ✅ "undefined"
+
+// To check if something is null:
+let value = null;
+console.log(value === null); // ✅ true (use strict equality)
+console.log(value == null); // ✅ true
+
+// Checking all types
+console.log(typeof 42); // "number"
+console.log(typeof "hello"); // "string"
+console.log(typeof true); // "boolean"
+console.log(typeof undefined); // "undefined"
+console.log(typeof Symbol("id")); // "symbol"
+console.log(typeof BigInt(123)); // "bigint"
+console.log(typeof {}); // "object"
+console.log(typeof []); // "object" (arrays are objects)
+console.log(typeof function(){}); // "function"
+```
+
+---
+
+# 🟢 DAY 1 (EXTRA but IMPORTANT CONTENT)
+
+### 1️⃣ JavaScript Keywords & Reserved Words
+
+Ye wo words hote hain jo JavaScript me already defined hote hain. Inhe hum variable names ke taur par use nahi kar sakte kyunki ye language ke liye special meanings rakhte hain.
+
+```javascript
+// COMMON JAVASCRIPT KEYWORDS
+let, const, var        // Variable declaration
+if, else, else if      // Conditional statements
+for, while, do         // Loops
+function, return       // Functions
+break, continue        // Loop control
+true, false, null      // Literals
+undefined              // Undefined value
+try, catch, finally    // Error handling
+throw                  // Throw errors
+class, extends         // OOP
+this, new, delete      // Object operations
+typeof, instanceof     // Type checking
+switch, case           // Switch statements
+default                // Default case
+import, export         // Modules
+async, await           // Async operations
+yield                  // Generators
+super, static          // Class features
+```
+
+---
+
+### ❌ Why We Cannot Use Keywords as Variable Names
+
+```javascript
+// WRONG EXAMPLES - These will throw SyntaxError
+
+// let if = 10; // ❌ SyntaxError: Unexpected token 'if'
+// let function = 20; // ❌ SyntaxError: Unexpected token 'function'
+// let return = 30; // ❌ SyntaxError: Unexpected token 'return'
+// let for = 40; // ❌ SyntaxError: Unexpected token 'for'
+// let class = 50; // ❌ SyntaxError: Unexpected token 'class'
+
+// CORRECT EXAMPLES - Avoiding reserved words
+
+let ifCondition = 10; // ✅ Good
+let myFunction = 20; // ✅ Good
+let returnValue = 30; // ✅ Good
+let forLoop = 40; // ✅ Good
+let myClass = 50; // ✅ Good
+```
+
+---
+
+### 📌 Interview Tip: "Why we cannot use keywords as variable names?"
+
+**Answer to give in Interview:**
+
+```javascript
+
+"JavaScript Keywords are reserved by the language itself for specific purposes.
+Each keyword has a predefined meaning in the JavaScript engine.
+
+If we could use keywords as variable names, it would create AMBIGUITY and 
+CONFLICTS with the language's parser.
+
+For example:
+- 'let' tells the engine to declare a variable
+- 'if' tells the engine to evaluate a condition
+- 'function' tells the engine to declare a function
+- 'return' tells the engine to exit a function
+
+If we use 'let if = 10;', the parser gets confused:
+  Does it mean: declare a variable named 'if'?
+  Or does it mean: start an if condition?
+
+This CONFLICT breaks the syntax and throws a SyntaxError.
+
+Therefore, to maintain clear and unambiguous code structure, JavaScript 
+reserves these keywords and doesn't allow them as variable names."
+
+// REAL WORLD ANALOGY
+console.log(`
+  🏛️ Keywords are like Traffic Rules:
+  - You can't use "STOP" as your car's name
+  - You can't use "RIGHT TURN" as a person's name
+  - Each has a specific meaning everyone understands
+  
+  Similarly, keywords have specific meanings in programming!
+`);
+
+```
+
+---
+
+### 📝 Reserved Words vs Keywords
+
+```javascript
+// RESERVED WORDS (Cannot be used as identifiers)
+// Strict Mode Reserved Words
+let implements, interface, package, private, protected, public;
+let static, yield;
+
+// Browser Reserved Words (Future use)
+let enum, export, extends;
+
+// BEST PRACTICE: Avoid using words similar to keywords
+let myVar = 10; // ✅ Good
+let myFn = () => {}; // ✅ Good
+let forLoop = 0; // ✅ Good (avoid 'for')
+let ifCondition = true; // ✅ Good (avoid 'if')
+```
+
+---
+
+### 2️⃣ Statements vs Expressions (🔥 Interview Favourite)
+
+#### 🔹 What is a Statement?
+Jo kaam karta hai (Does an action but does NOT return a value).
+
+```javascript
+STATEMENTS - Perform actions, no return value
+
+Variable Declaration Statement
+let a = 10;
+const b = 20;
+var c = 30;
+
+// If-Else Statement
+if (a > 5) {
+  console.log("Greater");
+} else {
+  console.log("Smaller");
+}
+
+// For Loop Statement
+for (let i = 0; i < 5; i++) {
+  console.log(i);
+}
+
+// While Loop Statement
+while (a > 0) {
+  a--;
+}
+
+// Function Declaration Statement
+function greet() {
+  console.log("Hello");
+}
+
+// Switch Statement
+switch (a) {
+  case 10:
+    console.log("Ten");
+    break;
+  default:
+    console.log("Other");
+}
+
+// Try-Catch Statement
+try {
+  // some code
+} catch (error) {
+  console.log(error);
+}
+```
+
+---
+
+### 🔹 What is an Expression?
+Jo value return karta hai (Returns a value that can be used or stored).
+
+## EXPRESSIONS - Return values
+
+###  Arithmetic Expressions
+```javascript
+10 + 20; // Returns 30
+5 * 4; // Returns 20
+100 / 2; // Returns 50
+7 % 3; // Returns 1
+```
+
+### Comparison Expressions
+```javascript
+let a = 10;
+a > 5; // Returns true
+a < 5; // Returns false
+a === 10; // Returns true
+a !== 5; // Returns true
+```
+
+
+### Logical Expressions
+```javascript
+true && false; // Returns false
+true || false; // Returns true
+!true; // Returns false
+```
+
+### Assignment Expressions (Assignment is an expression in JS!)
+
+```javascript
+let x = 5; // Expression that returns 5
+let y = (x = 10); // Assignment expression returns 10
+console.log(y); // 10
+```
+
+### Function Call Expression
+```javascript
+Math.max(10, 20, 30); // Returns 30
+"hello".length; // Returns 5
+```
+
+### Ternary Operator Expression
+```javascript
+let age = 20;
+let status = age >= 18 ? "Adult" : "Minor"; // Expression returns "Adult"
+console.log(status);
+```
+
+### Increment/Decrement Expressions
+```javascript
+let count = 5;
+count++; // Expression returns 5 then increments
+++count; // Expression increments then returns
+```
+
+### Template Literal Expression
+```javascript
+let name = "John";
+`Hello ${name}`; // Expression returns "Hello John"
+```
+
+### Array Literal Expression
+```javascript
+[1, 2, 3]; // Expression returns an array
+```
+
+### Object Literal Expression
+```javascript
+[{ name: "John", age: 30 }; // Expression returns an object
+```
+
+### Function Expression (different from declaration)
+```javascript
+const add = function(a, b) {
+  return a + b;
+}; // Returns the function itself
+```
+
+---
+
+#### 📊 Key Differences - Quick Comparison
+
+```javascript
+// STATEMENT - No return value (Cannot be used on right side of =)
+if (true) {
+  console.log("This is a statement");
+}
+
+// EXPRESSION - Returns value (Can be stored in variable)
+let result = 10 > 5 ? "Yes" : "No"; // Expression returns "Yes"
+
+// ❌ WRONG - Cannot assign statement to variable
+// let x = (if (true) { ... }); // SyntaxError!
+
+// ✅ RIGHT - Can assign expression to variable
+let y = (10 > 5); // ✅ Works! y = true
+```
+
+---
+
+#### 📌 Interview Tip & Answer
+
+**Interview Question:** "What's the difference between statements and expressions?"
+
+**Answer to give:**
+
+```javascript
+
+"Statements and expressions are two fundamental concepts in JavaScript:
+
+🔹 STATEMENTS:
+- Perform actions or declare things
+- Do NOT return a value
+- Examples: let, if, for, while, switch, function declaration
+- Cannot  be used on the right side of assignment
+- Used to structure program flow
+
+🔹 EXPRESSIONS:
+- Calculate and return a value
+- The returned value can be stored in variables or used elsewhere
+- Examples: 10 + 20, a > 5, function calls, ternary operator
+- Can be used on right side of assignment
+- Used to produce values
+
+KEY POINT: 
+Expression hamesha kuch return karta hai, statement nahi.
+
+REAL WORLD ANALOGY:
+- STATEMENT = Recipe instructions ("Mix flour with water")
+  - Describes what to do
+  - Doesn't produce a direct result you take
+
+- EXPRESSION = Recipe measurement ("2 cups of flour")
+  - Produces/returns a value
+  - You can use this value directly
+
+PRACTICAL EXAMPLE:
+let x = if (true) { 10 }; // ❌ WRONG - if is a statement
+let y = true ? 10 : 20;   // ✅ RIGHT - ternary is an expression
+
+```
+
+---
+
+#### 🧪 Interview Practice Examples
+
+```javascript
+Identify whether it's Statement or Expression
+
+1. let name = "John";
+Answer: Statement (variable declaration)
+
+2. name.length
+Answer: Expression (returns 4)
+
+3. for (let i = 0; i < 5; i++) { }
+Answer: Statement (loop)
+
+4. Math.sqrt(16)
+Answer: Expression (returns 4)
+
+5. function add(a, b) { return a + b; }
+Answer: Statement (function declaration)
+
+6. const sum = (a, b) => a + b;
+Answer: Expression (arrow function expression)
+
+7. if (x > 10) { console.log("Big"); }
+Answer: Statement (conditional)
+
+8. x > 10 ? "Big" : "Small"
+Answer: Expression (ternary operator returns a value)
+
+9. while (true) { break; }
+Answer: Statement (loop)
+
+10. [1, 2, 3].map(x => x * 2)
+Answer: Expression (returns new array [2, 4, 6])
+```
+ ---
+
+
+### 3️⃣ JavaScript Case Sensitive Hoti Hai
+```javascript
+let name = "Rohit";
+let Name = "Amit";
+```
+
+#### ✔ Dono alag variables hain
+
+#### 📌 Interview trap:
+
+Ques : console.log(Name) vs console.log(name) 
+Answer : In JavaScript, console.log(Name) vs. console.log(name) will behave differently because JavaScript is case-sensitive. The key difference here is how JavaScript interprets variable names based on their case.
+
+### console.log(Name):
+
+JavaScript will look for a variable named Name. If Name is declared and assigned a value, it will log that value.
+
+If there is no variable named Name (with that specific capitalization), JavaScript will throw a ReferenceError, indicating that Name is not defined.
+
+###console.log(name):
+
+Similarly, JavaScript will look for a variable named name. If name is declared and assigned a value, it will log that value.
+
+If there is no variable named name, it will throw a ReferenceError.
+
+
+---
+## 4️⃣ Naming Conventions (Industry Rule)
+In JavaScript, a naming convention is just a set of rules and habits for naming things like variables, functions, and classes so your code is easy to read and understand.
+
+#### ✔ Valid
+let userName;
+let totalPrice;
+
+#### ❌ Invalid
+let user-name;
+let 123abc;
+
+#### 📌 camelCase JS ka standard hai
+
+---
+
+## 5️⃣ Type Conversion & Coercion (🔥 Very Important)
+
+### 🔥 What is a “Type”?
+
+A type is just the kind of value:
+
+number → 10
+
+string → "10"
+
+boolean → true / false
+
+
+1. Type Conversion (👉 YOU do it)
+Type Conversion means you manually change one type into another.
+
+```javascript
+let age = "25";     // string
+let newAge = Number(age);  // converted to number
+
+console.log(newAge);       // 25
+console.log(typeof newAge); // number
+```
+
+#### Common Conversions:
+```javascript
+Number("10")   // 10
+String(10)     // "10"
+Boolean(1)     // true
+Boolean(0)     // false
+```
+2. Type Coercion (👉 JavaScript does it)
+Type Coercion means JavaScript automatically changes the type for you.
+
+Example:
+``` javascript
+let result = "5" + 2;
+console.log(result);   // "52"
+```
+
+#### JS says:
+- 💭 “Oh, one value is a string… I’ll convert 2 to "2"”
+
+### ⚠️ IMPORTANT: + is special
+```javascript
+"5" + 2   // "52"  (string)
+"5" - 2   // 3     (number)
+"5" * 2   // 10
+"5" / 2   // 2.5
+true + 1   // 2
+false + 1  // 1
+```
+
+----
+## NaN (Not a Number)
+NaN stands for Not a Number.
+It’s a special value that represents something not a valid number.
+
+```js
+Number("abc")  // NaN
+Check:
+isNaN("abc")  // true
+```
+
+#### 📌 Interview:
+NaN === NaN → ❌ false
+
+---
+
+## 7️⃣ Undefined vs Null (CONFUSION CLEAR)
+
+| Undefined             | Null                      |
+| --------------------- | ------------------------- |
+| Value assign nahi hui | Value intentionally empty |
+| JS deta hai           | Developer deta hai        |
+
+```js
+let a;
+let b = null;
+```
+---
+
+## 8️⃣ Comments in JavaScript
+- // single line
+- /* multi
+- line */
+---
+
+## Tricky Output
+```js
+console.log("5" + 2); // ?
+console.log("5" - 2); // ?
+console.log(true + true); // ?
+console.log(null + 1); // ?
+```
+#### ✔ Answers:
+52
+3
+2
+1
+
+---
+
+# 🟡 DAY 2 – Conditionals, Loops & Functions (Deep Dive)
