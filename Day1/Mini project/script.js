@@ -29,3 +29,14 @@ if(username === "admin" && password === "1234"){
 }else{
   console.log("Invalid Credentials");
 }
+
+
+// 🔥 EXTRA MINI PROJECT (DAY 2 BONUS)
+// ✅ Password Strength Checker
+let pass = prompt("Enter password");
+
+if(pass.length < 6){
+  console.log("Weak Password");
+}else{
+  console.log("Strong Password");
+}
