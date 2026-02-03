@@ -1050,9 +1050,34 @@ for(let i = 1; i <= 5; i++){
   console.log(i);
 }
 ```
+---
+
+## 🔥 Interview Questions (JS Only)
+### Q1️⃣ What are conditional statements?
+👉 Used to control program flow based on conditions.
+
+### Q2️⃣ Difference between if-else and switch?
+- if-else → complex conditions
+- switch → same variable, multiple values
+
+### Q3️⃣ What is a ternary operator?
+👉 A short form of if-else in one line.
+
+### Q4️⃣ Is NaN truthy or falsy?
+👉 Falsy
+
+---
+| Statement   | Use                 |
+| ----------- | ------------------- |
+| `if`        | Single condition    |
+| `if...else` | Two conditions      |
+| `else if`   | Multiple conditions |
+| `switch`    | Many fixed values   |
+| `? :`       | Short if-else       |
+
+---
 
 ## 3 Funnction
-
 #### Question. What is the Function?
 Answer. A reusable block of code that performs a task. (Function = reusable block of code)
 
@@ -1113,3 +1138,186 @@ function test(){
 #### 📌 Block scope → let, const
 #### 📌 Function scope → var
 ---
+
+ ##  🔥 Interview Questions (JS)
+
+### Q1️⃣ What is a function?
+ 👉 A reusable block of code that performs a task.
+
+### Q2️⃣ What is the difference between parameters and arguments?
+- Parameter → variable in function definition
+- Argument → value passed while calling
+
+### Q3️⃣ What does return do?
+ 👉 Sends a value back and stops the function.
+
+ ---
+## 🟡 Extra DAY 2 
+
+## 1️⃣ Nested Conditions & Nested Loops (🔥 Interview + Logic)
+Real life problems yahin se aate hain.
+
+```js
+for(let i = 1; i <= 3; i++){
+  for(let j = 1; j <= 3; j++){
+    console.log(i, j);
+  }
+}
+```
+
+#### 📌 Use case:
+- Pattern printing
+- Matrix logic
+- Advanced loops
+
+---
+
+## 2️⃣ Function Hoisting (CONFUSION CLEAR)
+```js
+hello();
+
+function hello(){
+  console.log("Hello");
+}
+```
+
+### ✔ Works
+```js
+hi();
+
+const hi = () => {
+  console.log("Hi");
+}❌ Error
+```
+
+#### 📌 Interview question:
+Question. Why function declaration works but arrow doesn’t?
+Answer. Normal functions are fully hoisted, so they work even before definition. Arrow functions are stored in variables, and variables with const/let are not accessible before initialization, so they throw an error if called early.
+---
+
+### 3️⃣ Parameters vs Arguments (BASIC BUT ASKED)
+```js
+function add(a, b){ // parameters
+  return a + b;
+}
+add(5, 10); // arguments
+```
+
+### 4️⃣ Return vs Console.log (🔥 TRICKY)
+```js
+function test(){
+  return 10;
+  console.log("Hello");
+}
+```
+---
+#### 📌 return ke baad kuch execute nahi hota
+---
+
+## 5️⃣ Infinite Loop (Danger ⚠️)
+```js
+while(true){
+  console.log("Hello");
+}
+```
+---
+#### 📌 Interview: infinite loop kaise rokoge?
+JavaScript me infinite loop rokne ke short tareeke:
+- Condition sahi lagao
+```js
+let i = 0;
+while(i < 5){ i++; }
+```
+
+- Break use karo
+```js
+while(true){ if(condition) break; }
+```
+
+- Max iterations limit
+```js
+let count = 0;
+while(true){ if(count++>100) break; }
+```
+
+#### Browser/Node me stop
+- Node: Ctrl + C
+- Browser: Page reload
+
+---
+
+##  6️⃣ Function Inside Function (Intro to Closure)
+```js
+function outer(){
+  let x = 10;
+  function inner(){
+    console.log(x);
+  }
+  inner();
+}
+outer();
+```
+
+#### 📌 Ye concept DAY 4 (Closure) ka base hai
+
+---
+
+### 🎯 EXTRA INTERVIEW QUESTIONS (DAY 2)
+## 1️⃣ for vs while – kab use karte hain?
+
+**for loop**: Jab iteration count pata ho ya hum loop variable ko initialize, condition aur increment/decrement ek line me manage karna chahte hain.
+
+for(let i=0; i<5; i++){
+  console.log(i);
+}
+
+
+**while loop**: Jab iteration count pehle se pata nahi ho aur loop tab tak chalna chahiye jab tak condition true ho.
+
+let i = 0;
+while(i < 5){
+  console.log(i);
+  i++;
+}
+
+
+Rule of thumb:
+
+Fixed iterations → for
+
+Unknown iterations → while
+
+## 2️⃣ break vs continue – difference
+Feature	break	continue
+Purpose	Loop ko poori tarah rokta hai	Loop ke current iteration ko skip karta hai, next iteration chalta hai
+Example	for(let i=0;i<5;i++){ if(i===3) break; } → loop 3 pe stop	for(let i=0;i<5;i++){ if(i===3) continue; console.log(i); } → 3 skip, baaki print
+
+## 3️⃣ function hoisting kya hota hai?
+JavaScript me functions ko upar le jaa ke read kiya jaata hai memory me, chahe wo declared baad me bhi ho.
+Example:
+sayHi(); // Works even before declaration
+function sayHi(){
+  console.log("Hello!");
+}
+
+**Note:** Function expressions (const f = function(){}) hoisting me kaam nahi karte.
+
+## 4️⃣ return statement ka kaam
+Function se value wapas bhejne ke liye use hota hai.
+function add(a,b){
+  return a+b;
+}
+```js
+let result = add(2,3); // result = 5
+```
+Agar return nahi hai, function undefined return karta hai.
+
+## 5️⃣ Infinite loop kya hota hai?
+Loop jo kabhi terminate nahi hota, matlab condition hamesha true rehti hai ya variable update nahi hota.
+
+```js
+while(true){
+  console.log("Running forever");
+}
+```
+**Note:** Rokne ke liye: break, condition fix, ya max iterations lagao.
